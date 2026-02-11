@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register_complaint</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+        
+        <div class="container">
+
+<h2>Register Complaint</h2>
+
+<input id="title" placeholder="Title">
+<textarea id="desc" placeholder="Description"></textarea>
+
+<select id="category">
+<option>Electrical</option>
+<option>Water</option>
+<option>Furniture</option>
+<option>Civil</option>
+<option>Network</option>
+<option>Sanitation</option>
+</select>
+
+<input type="file" id="photo">
+
+<button onclick="addComplaint(); window.location.href='complaintsucess.html'">Submit</button>
+
+</div>
+<script>
+function addComplaint(){
+fetch("http://localhost:3000/complaint",{
+ method:"POST",
+ headers:{'Content-Type':'application/json'},
+ body:JSON.stringify({
+  title:title.value,
+  description:desc.value,
+  category_id:1,
+  roll:sessionStorage.getItem("roll")
+ })
+}).then(r=>r.json()).then(d=>{
+ location="complaintsucess.html?comp_id="+d.id;
+});
+}
+</script>
+
+</body>
+</html>

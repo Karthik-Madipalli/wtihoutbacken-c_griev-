@@ -1,0 +1,28 @@
+<!-- complaint_success.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Complaint Registered</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Your complaint has been registered</h2>
+    <p>Use the below <b>Complaint ID</b> to track the status.</p>
+
+    <div class="block">
+      <h3 id="compId"></h3>
+    </div>
+
+    <button onclick="window.location.href='student.html'">Back to Dashboard</button>
+  </div>
+
+  <script>
+    // URL: complaint_success.html?comp_id=123
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("comp_id");
+    document.getElementById("compId").innerText = "Complaint ID: " + id;
+  </script>
+</body>
+</html>
